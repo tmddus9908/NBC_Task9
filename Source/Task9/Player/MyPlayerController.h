@@ -5,6 +5,7 @@
 #include "MyPlayerController.generated.h"
 
 
+class UNumberUserWidget;
 class UMyUserWidget;
 
 UCLASS()
@@ -37,6 +38,10 @@ protected:
 	TSubclassOf<UUserWidget> NotificationTextWidgetClass;
 	UPROPERTY()
 	UUserWidget* NotificationTextWidgetInstance;
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UNumberUserWidget> NumberUserWidgetClass;
+	UPROPERTY()
+	UNumberUserWidget* NumberUserWidgetInstance;
 
 	FString Message;
 };

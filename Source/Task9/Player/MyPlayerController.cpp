@@ -2,6 +2,7 @@
 
 #include "MyPlayerState.h"
 #include "Chat/MyUserWidget.h"
+#include "Chat/NumberUserWidget.h"
 #include "Game/MyGameModeBase.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -42,6 +43,21 @@ void AMyPlayerController::BeginPlay()
 		{
 			NotificationTextWidgetInstance->AddToViewport();
 		}
+	}
+
+	if (IsValid(NumberUserWidgetClass))
+	{
+		NumberUserWidgetInstance = CreateWidget<UNumberUserWidget>(this, NumberUserWidgetClass);
+
+		if (IsValid(NumberUserWidgetInstance))
+		{
+			NumberUserWidgetInstance->AddToViewport();
+		}
+	}
+	
+	if (IsValid(TextBoxWidgetInstance) && IsValid(NumberUserWidgetInstance))
+	{
+		NumberUserWidgetInstance->SetTargetWidget(TextBoxWidgetInstance);
 	}
 }
 
